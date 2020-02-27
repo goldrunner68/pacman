@@ -2,11 +2,11 @@ import javafx.application.Application;
 
 
 
-import view.ViewMenu;
+import view.ViewMain;
 
 
 public class Main {
     public static void main(String[] args) {
-        Application.launch(ViewMenu.class);
+        Application.launch(ViewMain.class);
     }
 }
