@@ -73,7 +73,7 @@ public class ViewMenu {
     private void musicMenu(){
 
     }
-    void setVueCompletMenu(){
+   public void setVueCompletMenu(){
         root.getChildren().clear();
         final File file = new File("src/Asset/Sons/pacman_beginning.wav");
         final Media media = new Media(file.toURI().toString());
