@@ -1,17 +1,17 @@
 package view;
 
-import View.ViewHandler;
-import javafx.scene.Group;
 
-public class ViewOption {
-    public ViewOption(Group root, ViewHandler viewHandler) {
+import javafx.event.EventHandler;
 
-    }
+import javafx.scene.input.MouseEvent;
 
-    public void setVueOption() {
-    }
+class ControllerOption implements EventHandler<MouseEvent> {
+    private ViewHandler launcher;
 
-    public void setEvents(ControllerMenu controllerMenu) {
+
+
+    @Override
+    public void handle(MouseEvent event) {
 
     }
 }

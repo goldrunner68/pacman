@@ -1,6 +1,7 @@
-package view;
+package Controller;
 
-import View.ViewHandler;
+import view.Option;
+import view.ViewHandler;
 
 public class ControllerOption {
     public ControllerOption(ViewHandler viewHandler, Option options) {

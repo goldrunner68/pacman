@@ -1,9 +1,8 @@
 
 
 
-import View.ViewHandler;
 import javafx.application.Application;
-
+import view.ViewHandler;
 
 
 public class Main {

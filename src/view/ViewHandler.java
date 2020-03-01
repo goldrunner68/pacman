@@ -1,5 +1,8 @@
-package View;
+package view;
 
+import Controller.ControllerKeyboard;
+import Controller.ControllerMenu;
+import Controller.ControllerOption;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -8,7 +11,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-import view.*;
 
 
 public class ViewHandler extends Application {
@@ -19,7 +21,7 @@ public class ViewHandler extends Application {
     private Group root;
     private Scene scene;
     private ViewMenu menu;
-    private ViewOption option;
+
     private ViewJeu viewJeu;
     private Menu model;
     private Option options;
@@ -39,7 +41,7 @@ public class ViewHandler extends Application {
         Scene scene = new Scene(root, screenWidth, screenHeight, Color.BLACK);
         model = new Menu();
         menu = new ViewMenu(root,model);
-        option = new ViewOption(root, this );
+
         viewJeu = new ViewJeu(root,this);
         jeu = new Jeu();
         ControllerMenu controllerMenu = new ControllerMenu(this, model);
@@ -80,9 +82,7 @@ public class ViewHandler extends Application {
     public ViewMenu getMenu() {
         return menu;
     }
-    public ViewOption getOption() {
-        return option;
-    }
+
     public ViewJeu getViewJeu(){
         return viewJeu;
     }
@@ -92,14 +92,11 @@ public class ViewHandler extends Application {
     public void setVueJeu(){
         viewJeu.afficherJeu();
     }
-    public void setVueOption(){
-        option.setVueOption();
-    }
     public void setEventHandlerMenu(ControllerMenu controllerMenu){
         menu.setEvents(controllerMenu);
-        option.setEvents(controllerMenu);
-        option.setVueOption();
+
     }
+
 
 
 }

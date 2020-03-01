@@ -1,6 +1,5 @@
 package view;
 
-import View.ViewHandler;
 import javafx.scene.Group;
 
 public class ViewJeu {
