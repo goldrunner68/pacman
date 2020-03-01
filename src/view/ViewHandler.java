@@ -24,7 +24,7 @@ public class ViewHandler extends Application {
 
     private ViewJeu viewJeu;
     private Menu model;
-    private Option options;
+
     private Jeu jeu;
     private ImageView paddle;
 
@@ -45,7 +45,7 @@ public class ViewHandler extends Application {
         viewJeu = new ViewJeu(root,this);
         jeu = new Jeu();
         ControllerMenu controllerMenu = new ControllerMenu(this, model);
-        ControllerOption controllerOption = new ControllerOption(this, options);
+
         //controllerJeu = new ControllerJeu(this);
         afficherMenuPrincipal();
         Music.playMainMenuMusic();

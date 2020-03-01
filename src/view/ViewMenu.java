@@ -18,7 +18,7 @@ import java.io.File;
 public class ViewMenu {
     private Group root;
     private ImageView imgBg;
-    private Text jouer, option, quitter, titre;
+    private Text jouer, option, quitter, titre,bonus;
     private Menu model;
 
     public ViewMenu(Group root, Menu model) {
@@ -29,36 +29,53 @@ public class ViewMenu {
         musicMenu();
     }
     private void initBackground() {
-        imgBg = new ImageView("Asset/Images/crane.jpeg");
+        imgBg = new ImageView("Asset/Images/wallpaper-pacman.jpg");
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getBounds();
         imgBg.setFitHeight((int) primaryScreenBounds.getHeight());
         imgBg.setFitWidth((int) primaryScreenBounds.getWidth());
     }
 
     private void texteMenu(){
-        titre = new Text(250, 100, "BREAK OUT");
-        titre.setFont(new Font("Arial", 100));
-        titre.setFill (Color.WHITE);
+
+
+        titre = new Text(1000, 100, "PACMAN");
+
+        titre.setStyle(" -fx-font: 100px Tahoma;-fx-fill: " +
+                "linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);" +
+                "-fx-stroke: black;");
+
         ///
-        jouer = new Text(150, 450,"Jouer");
-        jouer.setFont(new Font("Arial", 25));
-        jouer.setFill (Color.WHITE);
+        jouer = new Text(1300, 300,"Jouer");
+        jouer.setStyle(" -fx-font: 50px Tahoma;-fx-fill: " +
+                "linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);" +
+                "-fx-stroke: black;");
         ///
-        option = new Text(150, 600, "Options");
-        option.setFont(new Font("Arial", 25));
-        option.setFill (Color.WHITE);
+        option = new Text(1300, 500, "Options");
+        option.setStyle(" -fx-font: 50px Tahoma;-fx-fill: " +
+                "linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);" +
+                "-fx-stroke: black;");
+        /////
+        bonus = new Text(1300, 700, "Bonus");
+        bonus.setStyle(" -fx-font: 50px Tahoma;-fx-fill: " +
+                "linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);" +
+                "-fx-stroke: black;");
+        ////
+        quitter = new Text(1300, 900, "Quitter");
+        quitter.setStyle(" -fx-font: 50px Tahoma;-fx-fill: " +
+                "linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);" +
+                "-fx-stroke: black;");
+        ////
+
 
         ////
-        quitter = new Text(150, 750, "Quitter");
-        quitter.setFont(new Font("Arial", 25));
-        quitter.setFill (Color.WHITE);
+
     }
     private void musicMenu(){
 
     }
     void setVueCompletMenu(){
         root.getChildren().clear();
-        final File file = new File("src/Asset/Sons/Xenon.2.mp3");
+        final File file = new File("src/Asset/Sons/pacman_beginning.wav");
         final Media media = new Media(file.toURI().toString());
         final MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.setAutoPlay(true);
@@ -68,6 +85,7 @@ public class ViewMenu {
         root.getChildren().add(titre);
         root.getChildren().add(jouer);
         root.getChildren().add(option);
+        root.getChildren().add(bonus);
         root.getChildren().add(quitter);
 
     }
