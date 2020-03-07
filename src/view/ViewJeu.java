@@ -12,8 +12,11 @@ public class ViewJeu {
     private Jeu jeu;
     private ImageView imageDeFond;
     private double vitesse = 10;
+    //
+
 
     public ViewJeu(Group root, ViewHandler viewHandler) {
+
         jeu = new Jeu();
         this.root = root;
         this.viewHandler = viewHandler;
@@ -22,6 +25,13 @@ public class ViewJeu {
         afficherJeu();
     }
     private void initBackground() {
+        TiledMap tiledMap = new TmxMapLoader().load("level1.tmx");
+        TiledMapRenderer tiledMapRenderer = new OrthogonalTiledMapRenderer(tiledMap);
+        OrthographicCamera camera = new OrthographicCamera(960, 900);
+        camera.position.set(posX, posY, 0);
+        camera.update();
+        tiledMapRenderer.setView(camera);
+        tiledMapRenderer.render();
         imageDeFond = new ImageView("Asset/Images/pacmanFondInGame.jpg");
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getBounds();
         imageDeFond.setFitHeight((int) primaryScreenBounds.getHeight());
