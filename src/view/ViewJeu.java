@@ -2,28 +2,19 @@ package view;
 
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
-import javafx.scene.Node;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.text.Text;
 import javafx.stage.Screen;
 
 import java.util.ArrayList;
 
-import static javafx.scene.paint.Color.RED;
-
 public class ViewJeu {
     private Group root;
-    private ViewHandler viewHandler;
-    private ImageView spritePacman;
     private Jeu jeu;
-    private ImageView imageDeFond;
-    private double vitesse = 10;
-    Text affichagePlateau;
+    private ImageView imageDeFond,boule,brique;
     private ArrayList niveau1;
-    private Text aff;
-    private Rectangle rectangle;
+    private Rectangle rectangle,rectangle1;
 
     //
 
@@ -32,47 +23,54 @@ public class ViewJeu {
 
         jeu = new Jeu();
         this.root = root;
-        this.viewHandler = viewHandler;
 
         initBackground();
-
         afficherJeu();
     }
 private void univers(){
     int plateau[] ={
-            1,1,1,1,
-            2,2,2,1,
+            1,1,1,1,1,1,1,1,1,1,3,
+            1,2,2,1,2,2,2,2,2,1,3,
+            1,1,2,1,2,2,2,1,2,1,3,
+            0,2,2,2,2,2,2,1,2,0,3,//44
+            1,2,1,2,2,2,2,2,2,1,3,
+            1,2,1,1,2,2,1,2,1,1,3,
+            1,2,2,2,2,1,1,2,1,1,3,
+            1,1,1,1,1,1,1,1,1,1,3//44
     };
-
     niveau1 = new ArrayList();
-
-    for(int i = 0; i < 8; i++)
+    int col = 0;
+    int ligne =0;
+    for(int index = 0; index < 88; index++)
     {
-        niveau1.add(plateau[i]);
+        col = col+64;
+        niveau1.add(plateau[index]);
+        if (niveau1.get(index).equals(3)){// si 3 passe a la ligne
+           ligne = ligne+64;
+           col =0;
+        }
+        if (niveau1.get(index).equals(1)){// si 1 affiche une brique
+            brique = new ImageView("Asset/Images/Brick_Block.png");
+            brique.setX(600+col);
+            brique.setY(300+ligne);
+            brique.setFitWidth(64);
+            brique.setFitHeight(64);
+            root.getChildren().add(brique);
+        }
+        if (niveau1.get(index).equals(2)){// si 1 affiche une boule
+            boule = new ImageView("Asset/Images/boule.png");
+            boule.setX(600+col);
+            boule.setY(300+ligne);
+            boule.setFitWidth(64);
+            boule.setFitHeight(64);
+            root.getChildren().add(boule);
+        }
 
 
-        if (niveau1.get(0).equals(1)){
-            Rectangle rectangle = new Rectangle();
-            rectangle.setX(20);
-            rectangle.setY(50);
-            rectangle.setWidth(200);
-            rectangle.setHeight(150);
-            rectangle.setFill(Color.RED);
-        }
-        if (niveau1.get(0).equals(2)){
-            Rectangle rectangle = new Rectangle();
-            rectangle.setX(20);
-            rectangle.setY(50);
-            rectangle.setWidth(200);
-            rectangle.setHeight(150);
-            rectangle.setFill(Color.BLUE);
-        }
     }
 
 }
     private void initBackground() {
-
-
 
         imageDeFond = new ImageView("Asset/Images/pacmanFondInGame.jpg");
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getBounds();
@@ -84,7 +82,7 @@ private void univers(){
 
     public void afficherJeu() {
         root.getChildren().clear();
-        root.getChildren().add(rectangle);
+        univers();
 
         }
 
