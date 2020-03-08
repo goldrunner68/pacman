@@ -14,7 +14,7 @@ public class ViewJeu {
     private Jeu jeu;
     private ImageView imageDeFond,boule,brique;
     private ArrayList niveau1;
-    private Rectangle rectangle,rectangle1;
+
 
     //
 
