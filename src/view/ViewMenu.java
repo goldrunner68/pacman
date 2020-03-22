@@ -8,8 +8,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
 
@@ -19,11 +17,11 @@ public class ViewMenu {
     private Group root;
     private ImageView imgBg;
     private Text jouer, option, quitter, titre,bonus;
-    private Menu model;
+    private Menu menu;
 
-    public ViewMenu(Group root, Menu model) {
+    public ViewMenu(Group root, Menu menu) {
         this.root = root;
-        this.model = model;
+        this.menu = menu;
         initBackground();
         texteMenu();
         musicMenu();

@@ -24,15 +24,13 @@ public class ViewJeu {
     //
 
 
-    public ViewJeu(Group root, ViewHandler viewHandler) {
-
+    public ViewJeu(Group root) {
         this.root = root;
         initBackground();
         scoreAffichage();
         timeAffichage();
         setVueJeu();
     }
-
 
 
 

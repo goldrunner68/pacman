@@ -12,17 +12,15 @@ import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
+import java.util.jar.JarEntry;
+
 
 public class ViewHandler extends Application {
 
     private final static int WIDTH = 800;
-
     private Stage primaryStage;
     private ViewMenu menu;
     private ViewJeu viewJeu;
-
-
-
 
     @Override
     public void start(Stage primaryStage) {
@@ -31,10 +29,10 @@ public class ViewHandler extends Application {
         int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
         Group root = new Group();
         Scene scene = new Scene(root, screenWidth, screenHeight, Color.BLACK);
-        Menu model = new Menu();
-        menu = new ViewMenu(root,model);
-        viewJeu = new ViewJeu(root,this);
-        ControllerMenu controllerMenu = new ControllerMenu(this, model);
+        Menu menu = new Menu();
+        this.menu = new ViewMenu(root,menu);
+        viewJeu = new ViewJeu(root);
+        ControllerMenu controllerMenu = new ControllerMenu(this, menu);
         //controllerJeu = new ControllerJeu(this);
         afficherMenuPrincipal();
         Music.playMainMenuMusic();
@@ -56,7 +54,6 @@ public class ViewHandler extends Application {
     public void setVueJeu(){
         viewJeu.setVueJeu();
     }
-
 
 
     public ViewMenu getMenu() {

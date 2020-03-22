@@ -10,6 +10,7 @@ public class ControllerMenu implements EventHandler<MouseEvent> {
     private ViewHandler launcher;
     private Menu model;
 
+
     public ControllerMenu(ViewHandler launcher, Menu model) {
             this.model = model;
             this.launcher = launcher;
