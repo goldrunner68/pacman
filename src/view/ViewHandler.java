@@ -1,8 +1,6 @@
 package view;
 
-import Controller.ControllerKeyboard;
 import Controller.ControllerMenu;
-import Controller.ControllerOption;
 
 
 import javafx.application.Application;
@@ -20,12 +18,9 @@ public class ViewHandler extends Application {
     private final static int WIDTH = 800;
 
     private Stage primaryStage;
-    private Group root2;
-    private Scene scene;
     private ViewMenu menu;
     private ViewJeu viewJeu;
-    private Jeu jeu;
-    private ImageView paddle;
+
 
 
 
@@ -37,12 +32,9 @@ public class ViewHandler extends Application {
         Group root = new Group();
         Scene scene = new Scene(root, screenWidth, screenHeight, Color.BLACK);
         Menu model = new Menu();
-        menu = new ViewMenu(root, model);
-
+        menu = new ViewMenu(root,model);
         viewJeu = new ViewJeu(root,this);
-        jeu = new Jeu();
         ControllerMenu controllerMenu = new ControllerMenu(this, model);
-
         //controllerJeu = new ControllerJeu(this);
         afficherMenuPrincipal();
         Music.playMainMenuMusic();
@@ -52,30 +44,21 @@ public class ViewHandler extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
-    public void afficherMenuPrincipal(){
-
-        menu.setVueCompletMenu();
-        ControllerKeyboard controllerKeyboard = new ControllerKeyboard(this, jeu);
-    }
-
-    public void moveLeft() {
-        if (paddle.getX() > -20) {
-            paddle.setX(paddle.getX() - 3);
-        }
-    }
-
-    public void moveRight() {
-        if (paddle.getX() < WIDTH - 23) {
-            paddle.setX(paddle.getX() + 3);
-        }
-    }
-
-
     //Getters et Setters
     public Stage getPrimaryStage() {
         return primaryStage;
     }
+
+    public void afficherMenuPrincipal(){
+        menu.setVueMenu();
+
+    }
+    public void setVueJeu(){
+        viewJeu.setVueJeu();
+    }
+
+
+
     public ViewMenu getMenu() {
         return menu;
     }
@@ -83,12 +66,7 @@ public class ViewHandler extends Application {
     public ViewJeu getViewJeu(){
         return viewJeu;
     }
-    public void setVueCompletMenu(){
-        menu.setVueCompletMenu();
-    }
-    public void setVueJeu(){
-        viewJeu.afficherJeu();
-    }
+
     public void setEventHandlerMenu(ControllerMenu controllerMenu){
         menu.setEvents(controllerMenu);
 

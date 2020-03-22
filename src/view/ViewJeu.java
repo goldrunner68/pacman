@@ -5,7 +5,6 @@ import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
-import model.Chrono;
 import model.Model;
 import javafx.scene.text.*;
 
@@ -15,24 +14,23 @@ import java.util.Timer;
 
 public class ViewJeu {
     private Group root;
-    private ImageView imageDeFond,boule,brique;
+    private ImageView imageDeFond;
     private ArrayList<Integer> niveau1;
     private Model univers;
     private Text score,timeLaps;
-    private Timer timer;
-    private Player player;
+
 
 
     //
 
 
     public ViewJeu(Group root, ViewHandler viewHandler) {
-        Jeu jeu = new Jeu();
+
         this.root = root;
         initBackground();
         scoreAffichage();
         timeAffichage();
-        afficherJeu();
+        setVueJeu();
     }
 
 
@@ -47,7 +45,7 @@ public class ViewJeu {
 
     }
     public void scoreAffichage(){
-        Chrono chrono = new Chrono();
+
         score = new Text("SCORE : 00000");
         score.setFont(Font.font ("Verdana", 30));
         score.setFill(Color.GREEN);
@@ -63,7 +61,7 @@ public class ViewJeu {
     }
 
 
-    public void afficherJeu() {
+    public void setVueJeu() {
         root.getChildren().clear();
         root.getChildren().add(imageDeFond);
         root.getChildren().add(score);
