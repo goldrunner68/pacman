@@ -10,7 +10,6 @@ import javafx.scene.text.*;
 
 
 import java.util.ArrayList;
-import java.util.Timer;
 
 public class ViewJeu {
     private Group root;
@@ -18,8 +17,8 @@ public class ViewJeu {
     private ArrayList<Integer> niveau1;
     private Model univers;
     private Text score,timeLaps;
-
-
+    private Player player;
+    private int playerControllerX,playerControllerY;
 
     //
 
@@ -35,12 +34,12 @@ public class ViewJeu {
 
 
     private void initBackground() {
-        univers = new Model(root,niveau1);
+        univers = new Model(root,niveau1);// le tableau du niveau construit
         imageDeFond = new ImageView("Asset/Images/pacmanFondInGame.jpg");
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getBounds();
         imageDeFond.setFitHeight((int) primaryScreenBounds.getHeight());
         imageDeFond.setFitWidth((int) primaryScreenBounds.getWidth());
-
+        player = new Player(root,playerControllerX,playerControllerY);//le sprite pacman
     }
     public void scoreAffichage(){
 
@@ -64,8 +63,8 @@ public class ViewJeu {
         root.getChildren().add(imageDeFond);
         root.getChildren().add(score);
         root.getChildren().add(timeLaps);
-        univers.constructionLevel();
-
+        univers.constructionLevel();// le tableau du niveau construit
+        player.loadImage();//le sprite pacman
 
 
         }
