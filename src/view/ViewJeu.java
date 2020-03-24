@@ -1,8 +1,11 @@
 package view;
 
+import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import model.Model;
@@ -28,6 +31,7 @@ public class ViewJeu {
         initBackground();
         scoreAffichage();
         timeAffichage();
+
         setVueJeu();
     }
 
@@ -58,13 +62,18 @@ public class ViewJeu {
     }
 
 
+
     public void setVueJeu() {
         root.getChildren().clear();
         root.getChildren().add(imageDeFond);
         root.getChildren().add(score);
         root.getChildren().add(timeLaps);
         univers.constructionLevel();// le tableau du niveau construit
-        player.loadImage();//le sprite pacman
+
+        EventHandler<KeyEvent> eventEventHandler =
+                e -> player.setPlayerControllerX();
+        player.loadImage();
+    }
 
 
         }
@@ -78,4 +87,4 @@ public class ViewJeu {
 
 
 
-}
+
