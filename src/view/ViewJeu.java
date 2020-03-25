@@ -36,8 +36,6 @@ public class ViewJeu {
 
     }
 
-
-
     private void initBackground() {
         univers = new Model(root, niveau1);// le tableau du niveau construit
         imageDeFond = new ImageView("Asset/Images/pacmanFondInGame.jpg");
@@ -45,7 +43,7 @@ public class ViewJeu {
         imageDeFond.setFitHeight((int) primaryScreenBounds.getHeight());
         imageDeFond.setFitWidth((int) primaryScreenBounds.getWidth());
         player = new PacmanSprite(root, playerControllerX, playerControllerY);//le sprite pacman
-        clavier = new Clavier();
+
     }
     public void scoreAffichage(){
 

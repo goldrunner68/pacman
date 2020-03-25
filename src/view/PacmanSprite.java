@@ -1,7 +1,4 @@
 package view;
-
-
-import Controller.Clavier;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 
@@ -10,8 +7,6 @@ public class PacmanSprite<valeurX> {
     private Group root;
     private ImageView puckman;
     private int playerControllerX, playerControllerY;
-    private int index = 10;
-    private Clavier clavier;
     private int valeurX;
 
 
@@ -22,24 +17,24 @@ public class PacmanSprite<valeurX> {
 
     }
 
-    public double getPlayerControllerX() {
-        setPlayerControllerX(valeurX);
+    public int getPlayerControllerX() {
+        setPlayerControllerX();
         return playerControllerX;
+    }
+
+    public int getPlayerControllerY() {
+        setPlayerControllerY();
+        return playerControllerY;
+    }
+
+    public void setPlayerControllerX() {
+        this.playerControllerX = 500;
+
     }
 
     public void setPlayerControllerY() {
         this.playerControllerY = 500;
 
-    }
-
-    public void setPlayerControllerX(int valeurX) {
-        this.playerControllerX = valeurX;
-
-    }
-
-    public double getPlayerControllerY() {
-        setPlayerControllerY();
-        return playerControllerY;
     }
 
 

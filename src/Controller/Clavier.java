@@ -1,28 +1,35 @@
 package Controller;
 
-import javafx.event.EventHandler;
-import javafx.scene.input.KeyEvent;
+
+import javafx.scene.Scene;
 
 public class Clavier {
-    public Clavier() {
+    private Scene scene;
 
-        this.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            public void handle(KeyEvent ke) {
-                System.out.println("clavier");
+    public Clavier(Scene scene) {
+        this.scene = scene;
+    }
+
+    public static void deplacmentSprite(Scene scene) {
+        scene.setOnKeyPressed(e -> {
+            switch (e.getCode()) {
+                case UP:
+                    System.out.println("up");
+                    break;
+                case DOWN:
+                    System.out.println("down");
+                    break;
+                case LEFT:
+                    System.out.println("left");
+                    break;
+                case RIGHT:
+                    System.out.println("right");
+                    break;
+                default:
+                    System.out.println(e.getCode());
             }
         });
-        this.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            public void handle(KeyEvent ke) {
 
-            }
-        });
+
     }
-
-    private void setOnKeyPressed(EventHandler<KeyEvent> keyEventEventHandler) {
-    }
-
-    private void setOnKeyReleased(EventHandler<KeyEvent> keyEventEventHandler) {
-    }
-
-
 }
