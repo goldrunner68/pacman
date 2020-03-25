@@ -1,18 +1,13 @@
 package view;
 
 import Controller.ControllerMenu;
-
-
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
-import java.util.jar.JarEntry;
 
 
 public class ViewHandler extends Application {
@@ -38,7 +33,7 @@ public class ViewHandler extends Application {
         Music.playMainMenuMusic();
         primaryStage.setTitle("Pacman");
         primaryStage.setResizable(false);
-        primaryStage.setFullScreen(true);
+        primaryStage.setFullScreen(false);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
