@@ -1,6 +1,6 @@
 package view;
 
-import Controller.Clavier;
+import Controller.ClavierFleche;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
@@ -20,7 +20,7 @@ public class ViewJeu {
     private Text score, timeLaps;
     private PacmanSprite player;
     private int playerControllerX, playerControllerY;
-    private Clavier clavier;
+    private ClavierFleche clavier;
     private PacmanSprite pacmanSprite;
 
     //

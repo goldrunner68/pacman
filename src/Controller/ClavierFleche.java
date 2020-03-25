@@ -1,29 +1,37 @@
 package Controller;
 
-
 import javafx.scene.Scene;
 
-public class Clavier {
+
+public class ClavierFleche {
+
+    private static int valY, valX;
     private Scene scene;
 
-    public Clavier(Scene scene) {
+    public ClavierFleche(Scene scene) {
         this.scene = scene;
     }
 
+
     public static void deplacmentSprite(Scene scene) {
+
         scene.setOnKeyPressed(e -> {
             switch (e.getCode()) {
                 case UP:
-                    System.out.println("up");
+                    valY = valY + 1;
+                    System.out.println("UP " + valY);
                     break;
                 case DOWN:
-                    System.out.println("down");
+                    valY = valY - 1;
+                    System.out.println("DOWN " + valY);
                     break;
                 case LEFT:
-                    System.out.println("left");
+                    valX = valX - 1;
+                    System.out.println("LEFT " + valX);
                     break;
                 case RIGHT:
-                    System.out.println("right");
+                    valX = valX + 1;
+                    System.out.println("RIGHT " + valX);
                     break;
                 default:
                     System.out.println(e.getCode());

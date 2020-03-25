@@ -1,6 +1,6 @@
 package view;
 
-import Controller.Clavier;
+import Controller.ClavierFleche;
 import Controller.ControllerMenu;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -16,7 +16,7 @@ public class ViewHandler extends Application {
     private Stage primaryStage;
     private ViewMenu menu;
     private ViewJeu viewJeu;
-    private Clavier clavier;
+    private ClavierFleche clavier;
 
     @Override
     public void start(Stage primaryStage) {
@@ -25,7 +25,7 @@ public class ViewHandler extends Application {
         int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
         Group root = new Group();
         Scene scene = new Scene(root, screenWidth, screenHeight, Color.BLACK);
-        Clavier.deplacmentSprite(scene);//controle fleche
+        ClavierFleche.deplacmentSprite(scene);//controle fleche
         Menu menu = new Menu();
         this.menu = new ViewMenu(root,menu);
         viewJeu = new ViewJeu(root);
