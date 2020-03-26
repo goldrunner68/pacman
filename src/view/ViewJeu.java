@@ -4,7 +4,6 @@ import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
@@ -20,7 +19,7 @@ public class ViewJeu {
     private ArrayList<Integer> niveau1;
     private Model univers;
     private Text score,timeLaps;
-    private Player player;
+    private PlayerPacman player;
     private int playerControllerX,playerControllerY;
 
     //
@@ -43,7 +42,7 @@ public class ViewJeu {
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getBounds();
         imageDeFond.setFitHeight((int) primaryScreenBounds.getHeight());
         imageDeFond.setFitWidth((int) primaryScreenBounds.getWidth());
-        player = new Player(root,playerControllerX,playerControllerY);//le sprite pacman
+        player = new PlayerPacman(root,playerControllerX,playerControllerY);//le sprite pacman
     }
     public void scoreAffichage(){
 
