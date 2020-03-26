@@ -1,19 +1,14 @@
 package view;
 
+import Controller.ClavierFleche;
 import Controller.ControllerMenu;
-
-
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Menu;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
-
-import java.util.jar.JarEntry;
-
 
 public class ViewHandler extends Application {
 
@@ -21,6 +16,7 @@ public class ViewHandler extends Application {
     private Stage primaryStage;
     private ViewMenu menu;
     private ViewJeu viewJeu;
+    private ClavierFleche clavier;
 
     @Override
     public void start(Stage primaryStage) {
@@ -29,19 +25,23 @@ public class ViewHandler extends Application {
         int screenHeight = (int) Screen.getPrimary().getBounds().getHeight();
         Group root = new Group();
         Scene scene = new Scene(root, screenWidth, screenHeight, Color.BLACK);
+        ClavierFleche.deplacmentSprite(scene);//controle fleche
         Menu menu = new Menu();
         this.menu = new ViewMenu(root,menu);
         viewJeu = new ViewJeu(root);
+
         ControllerMenu controllerMenu = new ControllerMenu(this, menu);
         //controllerJeu = new ControllerJeu(this);
         afficherMenuPrincipal();
         Music.playMainMenuMusic();
         primaryStage.setTitle("Pacman");
         primaryStage.setResizable(false);
-        primaryStage.setFullScreen(true);
+        primaryStage.setFullScreen(false);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+
     //Getters et Setters
     public Stage getPrimaryStage() {
         return primaryStage;

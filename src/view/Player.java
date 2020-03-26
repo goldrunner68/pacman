@@ -1,6 +1,7 @@
 package view;
 
 
+import Controller.MoveX;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 
@@ -9,7 +10,7 @@ public class Player {
     private Group root;
     private ImageView puckman;
     private int playerControllerX,playerControllerY;
-
+    private MoveX moveX;
     private int index = 10;
 
 
@@ -21,10 +22,9 @@ public class Player {
     }
 
     public void setPlayerControllerX() {
-index++;
-
-        this.playerControllerX=500+index;
-
+        moveX = new MoveX();
+        this.playerControllerX=0;
+        System.out.println( this.playerControllerX);
 
     }
 
