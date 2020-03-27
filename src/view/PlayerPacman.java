@@ -1,31 +1,21 @@
 package view;
-
-
-
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
-
-import static Controller.ClavierFleche.getValX;
 
 
 public class PlayerPacman {
     private Group root;
-    private ImageView puckman;
     private int playerControllerX,playerControllerY;
 
 
-    public PlayerPacman(Group root, int playerControllerX, int playerControllerY) {
+    public PlayerPacman(Group root) {
         this.root = root;
-        this.playerControllerX = 500;
-        this.playerControllerY = 500;
         loadImage();
     }
 
-
     public void loadImage() {
-        puckman= new  ImageView("src/Asset/Images/puckman.png");
-        puckman.setX(getPlayerControllerX());
-        puckman.setY(getPlayerControllerY());
+        ImageView puckman = new ImageView("src/Asset/Images/puckman.png");
+        puckman.relocate(getPlayerControllerX(), getPlayerControllerY());//getteur pour la position du pacman
         puckman.setFitWidth(64);
         puckman.setFitHeight(64);
         root.getChildren().add(puckman);
@@ -35,16 +25,14 @@ public class PlayerPacman {
     }
 
     public void setPlayerControllerY() {
-
     }
 
-    public double getPlayerControllerX() {
 
+    public int getPlayerControllerX() {//valeur pour la position du pacman
         return playerControllerX;
     }
 
-    public double getPlayerControllerY() {
-
+    public int getPlayerControllerY() {//valeur pour la position du pacman
         return playerControllerY;
     }
 

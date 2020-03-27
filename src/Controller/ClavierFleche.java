@@ -23,21 +23,21 @@ public class ClavierFleche {
             switch (e.getCode()) {
                 case UP:
                     valY = valY + 1;
-                    System.out.println(" getValY " +getValY() );
+                    System.out.println(" getValY " + getValKeyUP_DOWN_pos_Y());
                     break;
                 case DOWN:
                     valY = valY - 1;
-                    System.out.println(" getValY " +getValY() );
+                    System.out.println(" getValY " + getValKeyUP_DOWN_pos_Y());
                     break;
                 case LEFT:
                     valX = valX - 1;
                     setValX(valX);
-                    System.out.println(" getValX " +getValX() );
+                    System.out.println(" getValX " + getValKeyLEFT_RIGHT_pos_X());
                     break;
                 case RIGHT:
                     valX = valX + 1;
                     setValX(valX);
-                    System.out.println(" getValX " +getValX() );
+                    System.out.println(" getValX " + getValKeyLEFT_RIGHT_pos_X());
                     break;
                 default:
 
@@ -46,15 +46,16 @@ public class ClavierFleche {
 
     }
 
-    public static int getValY() {
+    public static int getValKeyUP_DOWN_pos_Y() {
+        //incremente ou decremente quand clavier KEY_UP ou KEY_DOWN
         return valY;
     }
 
-    public  void setValY(int valY) {
+    public void setValY(int valY) {
     }
 
-    public static int getValX() {
-
+    public static int getValKeyLEFT_RIGHT_pos_X() {
+//incremente ou decremente la valeur KEY_LEFT ou KEY_RIGHT
         return valX;
     }
 

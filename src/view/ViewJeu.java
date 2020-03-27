@@ -1,15 +1,13 @@
 package view;
 
-import javafx.event.EventHandler;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import model.Model;
-import javafx.scene.text.*;
-
 
 import java.util.ArrayList;
 
@@ -42,7 +40,7 @@ public class ViewJeu {
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getBounds();
         imageDeFond.setFitHeight((int) primaryScreenBounds.getHeight());
         imageDeFond.setFitWidth((int) primaryScreenBounds.getWidth());
-        player = new PlayerPacman(root,playerControllerX,playerControllerY);//le sprite pacman
+        player = new PlayerPacman(root);//le sprite pacman
     }
     public void scoreAffichage(){
 
@@ -69,8 +67,7 @@ public class ViewJeu {
         root.getChildren().add(timeLaps);
         univers.constructionLevel();// le tableau du niveau construit
 
-        EventHandler<MouseEvent> eventEventHandler =
-                e -> player.setPlayerControllerX();
+
         player.loadImage();
     }
 

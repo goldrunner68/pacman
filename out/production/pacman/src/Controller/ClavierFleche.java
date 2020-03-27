@@ -1,43 +1,65 @@
 package Controller;
 
 import javafx.scene.Scene;
+import view.PlayerPacman;
 
 
 public class ClavierFleche {
+    private static int valY, valX;
+    private PlayerPacman palyer;
 
-    private static int valY,valX;
     private Scene scene;
 
     public ClavierFleche(Scene scene) {
         this.scene = scene;
     }
 
+    public ClavierFleche() {
+    }
 
     public static void deplacmentSprite(Scene scene) {
 
         scene.setOnKeyPressed(e -> {
             switch (e.getCode()) {
                 case UP:
-                     valY = valY + 1;
-                    System.out.println("UP "+valY);
+                    valY = valY + 1;
+                    System.out.println(" getValY " + getValKeyUP_DOWN_pos_Y() );
                     break;
                 case DOWN:
-                    valY = valY -1;
-                    System.out.println("DOWN "+valY);
+                    valY = valY - 1;
+                    System.out.println(" getValY " + getValKeyUP_DOWN_pos_Y() );
                     break;
                 case LEFT:
-                    valX = valX -1;
-                    System.out.println("LEFT "+valX);
+                    valX = valX - 1;
+                    setValX(valX);
+                    System.out.println(" getValX " + getValKeyLEFT_RIGHT_pos_X() );
                     break;
                 case RIGHT:
-                    valX = valX +1;
-                    System.out.println("RIGHT "+valX);
+                    valX = valX + 1;
+                    setValX(valX);
+                    System.out.println(" getValX " + getValKeyLEFT_RIGHT_pos_X() );
                     break;
                 default:
-                    System.out.println(e.getCode());
+
             }
         });
 
+    }
+
+    public static int getValKeyUP_DOWN_pos_Y() {
+ //incremente ou decremente quand clavier KEY_UP ou KEY_DOWN
+        return valY;
+    }
+
+    public  void setValY(int valY) {
+    }
+
+    public static int getValKeyLEFT_RIGHT_pos_X() {
+//incremente ou decremente la valeur KEY_LEFT ou KEY_RIGHT
+        return valX;
+    }
+
+    public static void setValX(int valX) {
 
     }
 }
