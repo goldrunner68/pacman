@@ -19,10 +19,12 @@ public class ControllerMenu implements EventHandler<MouseEvent> {
     }
     @Override
     public void handle(MouseEvent event){
-        if(event.getSource().equals(launcher.getMenu().getLancerJeu())){
+        if(event.getSource().equals(launcher.getViewMenu().getLancerJeu())) {
             launcher.setVueJeu();
+        }else if(event.getSource().equals(launcher.getViewMenu().getLancerOption())){
+                launcher.setVueOption();
 
-        }else if(event.getSource().equals(launcher.getMenu().getLancerQuitter())){
+        }else if(event.getSource().equals(launcher.getViewMenu().getLancerQuitter())){
             launcher.getPrimaryStage().close();
         }
 

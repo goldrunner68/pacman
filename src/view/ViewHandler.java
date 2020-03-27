@@ -14,8 +14,9 @@ public class ViewHandler extends Application {
 
     private final static int WIDTH = 800;
     private Stage primaryStage;
-    private ViewMenu menu;
+    private ViewMenu viewMenu;
     private ViewJeu viewJeu;
+    private ViewOption viewOption;
 
 
     @Override
@@ -27,11 +28,13 @@ public class ViewHandler extends Application {
         Scene scene = new Scene(root, screenWidth, screenHeight, Color.BLACK);
 
         Menu menu = new Menu();
-        this.menu = new ViewMenu(root,menu);
+        this.viewMenu = new ViewMenu(root, menu);
         viewJeu = new ViewJeu(root);
-
+        viewOption = new ViewOption(root);
         ControllerMenu controllerMenu = new ControllerMenu(this, menu);
+        ControllerMenu controllerOption = new ControllerMenu(this, menu);
         ControllerPlayer controllerPlayer = new ControllerPlayer(this, viewJeu, scene, root);
+
         //controllerJeu = new ControllerJeu(this);
         afficherMenuPrincipal();
         Music.playMainMenuMusic();
@@ -44,32 +47,39 @@ public class ViewHandler extends Application {
 
 
     //Getters et Setters
+    public void setEventHandlerMenu(ControllerMenu controllerMenu) {
+        viewMenu.setEvents(controllerMenu);
+
+    }
+
+
     public Stage getPrimaryStage() {
         return primaryStage;
     }
 
-    public void afficherMenuPrincipal(){
-        menu.setVueMenu();
-
+    public void afficherMenuPrincipal() {
+        viewMenu.setVueMenu();
     }
-    public void setVueJeu(){
+
+    public void setVueJeu() {
         viewJeu.setVueJeu();
     }
 
-
-    public ViewMenu getMenu() {
-        return menu;
+    public void setVueOption() {
+        viewOption.setVueOption();
     }
 
-    public ViewJeu getViewJeu(){
+    public ViewMenu getViewMenu() {
+        return viewMenu;
+    }
+
+    public ViewJeu getViewJeu() {
         return viewJeu;
     }
 
-    public void setEventHandlerMenu(ControllerMenu controllerMenu){
-        menu.setEvents(controllerMenu);
-
+    public ViewOption getViewOption() {
+        return viewOption;
     }
-
 
 
 }

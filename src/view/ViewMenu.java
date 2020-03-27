@@ -16,7 +16,7 @@ import java.io.File;
 public class ViewMenu {
     private Group root;
     private ImageView imgBg;
-    private Text jouer, option, quitter, titre,bonus;
+    private Text jouer, bonus, quitter, titre;
     private Menu menu;
 
     public ViewMenu(Group root, Menu menu) {
@@ -26,6 +26,7 @@ public class ViewMenu {
         texteMenu();
         musicMenu();
     }
+
     private void initBackground() {
         imgBg = new ImageView("Asset/Images/wallpaper-pacman.jpg");
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getBounds();
@@ -43,13 +44,13 @@ public class ViewMenu {
                 "-fx-stroke: black;");
 
         ///
-        jouer = new Text(1300, 300,"Jouer");
+        jouer = new Text(1300, 300, "Jouer");
         jouer.setStyle(" -fx-font: 50px Tahoma;-fx-fill: " +
                 "linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);" +
                 "-fx-stroke: black;");
         ///
-        option = new Text(1300, 500, "Options");
-        option.setStyle(" -fx-font: 50px Tahoma;-fx-fill: " +
+        bonus = new Text(1300, 500, "Options");
+        bonus.setStyle(" -fx-font: 50px Tahoma;-fx-fill: " +
                 "linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);" +
                 "-fx-stroke: black;");
         /////
@@ -82,7 +83,6 @@ public class ViewMenu {
         root.getChildren().addAll(imgBg);
         root.getChildren().add(titre);
         root.getChildren().add(jouer);
-        root.getChildren().add(option);
         root.getChildren().add(bonus);
         root.getChildren().add(quitter);
 
@@ -93,7 +93,7 @@ public class ViewMenu {
 
 
     public Text getLancerOption(){
-        return option;
+        return bonus;
     }
     public Text getLancerQuitter(){
         return quitter;
@@ -101,7 +101,7 @@ public class ViewMenu {
 
     void setEvents(ControllerMenu controllerMenu){
         jouer.setOnMouseClicked(controllerMenu);
-        option.setOnMouseClicked(controllerMenu);
+        bonus.setOnMouseClicked(controllerMenu);
         quitter.setOnMouseClicked(controllerMenu);
     }
 }

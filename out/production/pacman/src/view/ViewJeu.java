@@ -14,7 +14,7 @@ import model.Model;
 
 import java.util.ArrayList;
 
-public class ViewJeu extends Menu {
+public class ViewJeu {
 
     private Group root;
     private ImageView imageDeFond;
@@ -34,7 +34,6 @@ public class ViewJeu extends Menu {
         initBackground();
         scoreAffichage();
         timeAffichage();
-
         setVueJeu();
     }
 

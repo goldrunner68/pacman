@@ -6,19 +6,20 @@ import javafx.scene.control.Menu;
 import javafx.scene.input.MouseEvent;
 import view.ViewHandler;
 
-public class ControllerMenu implements EventHandler<MouseEvent> {
+public class ControllerBonus implements EventHandler<MouseEvent> {
     private ViewHandler launcher;
     private Menu model;
 
 
-    public ControllerMenu(ViewHandler launcher, Menu model) {
-            this.model = model;
-            this.launcher = launcher;
-            this.launcher.setEventHandlerMenu(this);
+    public void ControllerOption(ViewHandler launcher, Menu model) {
+        this.model = model;
+        this.launcher = launcher;
+
 
     }
+
     @Override
-    public void handle(MouseEvent event){
+    public void handle(MouseEvent event) {
         if (event.getSource().equals(launcher.getViewMenu().getLancerJeu())) {
             launcher.setVueJeu();
         } else if (event.getSource().equals(launcher.getViewMenu().getLancerOption())) {

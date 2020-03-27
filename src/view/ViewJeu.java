@@ -4,7 +4,6 @@ package view;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -14,16 +13,16 @@ import model.Model;
 
 import java.util.ArrayList;
 
-public class ViewJeu extends Menu {
+public class ViewJeu {
 
     private Group root;
     private ImageView imageDeFond;
-    private  ImageView pacman;
+    private ImageView pacman;
     private ArrayList<Integer> niveau1;
     private Model univers;
-    private Text score,timeLaps;
+    private Text score, timeLaps;
     private Scene scene;
-    private int valx,valy;
+    private int valx, valy;
 
 
     //
@@ -34,7 +33,6 @@ public class ViewJeu extends Menu {
         initBackground();
         scoreAffichage();
         timeAffichage();
-
         setVueJeu();
     }
 
