@@ -1,17 +1,21 @@
 package Controller;
 
 import javafx.scene.Scene;
+import view.PlayerPacman;
 
 
 public class ClavierFleche {
-
     private static int valY, valX;
+    private PlayerPacman palyer;
+
     private Scene scene;
 
     public ClavierFleche(Scene scene) {
         this.scene = scene;
     }
 
+    public ClavierFleche() {
+    }
 
     public static void deplacmentSprite(Scene scene) {
 
@@ -19,25 +23,42 @@ public class ClavierFleche {
             switch (e.getCode()) {
                 case UP:
                     valY = valY + 1;
-                    System.out.println("UP " + valY);
+                    System.out.println(" getValY " +getValY() );
                     break;
                 case DOWN:
                     valY = valY - 1;
-                    System.out.println("DOWN " + valY);
+                    System.out.println(" getValY " +getValY() );
                     break;
                 case LEFT:
                     valX = valX - 1;
-                    System.out.println("LEFT " + valX);
+                    setValX(valX);
+                    System.out.println(" getValX " +getValX() );
                     break;
                 case RIGHT:
                     valX = valX + 1;
-                    System.out.println("RIGHT " + valX);
+                    setValX(valX);
+                    System.out.println(" getValX " +getValX() );
                     break;
                 default:
-                    System.out.println(e.getCode());
+
             }
         });
 
+    }
+
+    public static int getValY() {
+        return valY;
+    }
+
+    public  void setValY(int valY) {
+    }
+
+    public static int getValX() {
+
+        return valX;
+    }
+
+    public static void setValX(int valX) {
 
     }
 }
