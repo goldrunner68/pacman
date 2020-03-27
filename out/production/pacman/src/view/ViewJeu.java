@@ -1,26 +1,30 @@
 package view;
 
-import javafx.event.EventHandler;
+
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Menu;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import model.Model;
-import javafx.scene.text.*;
-
 
 import java.util.ArrayList;
 
-public class ViewJeu {
+public class ViewJeu extends Menu {
+
     private Group root;
     private ImageView imageDeFond;
+    private  ImageView pacman;
     private ArrayList<Integer> niveau1;
     private Model univers;
     private Text score,timeLaps;
-    private PlayerPacman player;
-    private int playerControllerX,playerControllerY;
+    private Scene scene;
+    private int valx,valy;
+
 
     //
 
@@ -36,13 +40,14 @@ public class ViewJeu {
 
 
 
+
     private void initBackground() {
         univers = new Model(root,niveau1);// le tableau du niveau construit
         imageDeFond = new ImageView("Asset/Images/pacmanFondInGame.jpg");
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getBounds();
         imageDeFond.setFitHeight((int) primaryScreenBounds.getHeight());
         imageDeFond.setFitWidth((int) primaryScreenBounds.getWidth());
-        player = new PlayerPacman(root);//le sprite pacman
+
     }
     public void scoreAffichage(){
 
@@ -53,11 +58,18 @@ public class ViewJeu {
         score.setY(150);
    }
     public void timeAffichage(){
-        timeLaps = new Text( "TIME LAPS: 00000");
+
+        System.out.println();
+        timeLaps = new Text();
+
+        timeLaps.setText("time");
         timeLaps.setFont(Font.font ("Verdana", 30));
         timeLaps.setFill(Color.GREEN);
         timeLaps.setX(970);
         timeLaps.setY(150);
+
+
+
     }
 
 
@@ -70,8 +82,8 @@ public class ViewJeu {
         univers.constructionLevel();// le tableau du niveau construit
 
 
-        player.loadImage();
     }
+
 
 
         }
