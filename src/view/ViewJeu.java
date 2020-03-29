@@ -4,6 +4,7 @@ package view;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -34,6 +35,8 @@ public class ViewJeu {
     private static double maxY = 812;
     private double moveX;
     private double moveY;
+    private String url = "src/Asset/Images/puckman.png";
+    private Image pac;
 
     //
 
@@ -80,7 +83,10 @@ public class ViewJeu {
 
         moveX = minX + (axeX * 8);
         moveY = minY + (axeY * 8);
-        pacman = new ImageView("src/Asset/Images/puckman.png");
+        pac = new Image(url);
+        pacman = new ImageView(pac);
+
+
         pacman.relocate(moveX, moveY);
         scene.setOnKeyPressed(e -> {//controle clavier
 
@@ -88,6 +94,8 @@ public class ViewJeu {
                 case UP:
                     if (moveY >= minY) {
                         axeY--;
+                        url = "src/Asset/Images/puckmanHaut.png";
+                        pacman.setImage(new Image(url));//change image
                         moveY = minY + (axeY * 8);
                     }
                     System.out.println(moveY);
@@ -95,6 +103,8 @@ public class ViewJeu {
                 case DOWN:
                     if (moveY <= maxY) {
                         axeY++;
+                        url = "src/Asset/Images/puckmanBas.png";
+                        pacman.setImage(new Image(url));//change image
                         moveY = minY + (axeY * 8);
                     }
                     System.out.println(moveY);
@@ -102,6 +112,8 @@ public class ViewJeu {
                 case LEFT:
                     if (moveX >= minX) {
                         axeX--;
+                        url = "src/Asset/Images/puckmanGauche.png";
+                        pacman.setImage(new Image(url));//change image
                         moveX = minX + (axeX * 8);
                     }
                     System.out.println(moveX);
@@ -109,6 +121,8 @@ public class ViewJeu {
                 case RIGHT:
                     if (moveX <= maxX) {
                         axeX++;
+                        url = "src/Asset/Images/puckmanDroite.png";
+                        pacman.setImage(new Image(url));//change image
                         moveX = minX + (axeX * 8);
                     }
                     System.out.println(moveX);

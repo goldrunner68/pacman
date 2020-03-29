@@ -17,7 +17,7 @@ public class Model {
 
 // creation du niveau dans un tableau
     private int[] level(){
-        int plateau[] = {
+        int[] plateau = {
                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
                 1, 2, 2, 1, 4, 2, 2, 2, 4, 1,
                 1, 1, 2, 1, 2, 2, 2, 1, 2, 1,
@@ -30,7 +30,7 @@ public class Model {
 
         return plateau;
     }
-    public void constructionLevel(){
+    public void constructionLevel() {
         // axe X
         int valeuX = 670;
         // axe Y
@@ -40,9 +40,8 @@ public class Model {
         int[] plateau = level();
         niveau1 = new ArrayList<>();
         int col = 0;
-        int ligne =0;
-        for(int index = 0; index < level().length; index++)
-        {
+        int ligne = 0;
+        for (int index = 0; index < level().length; index++) {
 
             col = col+64;
             niveau1.add(plateau[index]);
