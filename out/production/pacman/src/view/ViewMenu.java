@@ -3,6 +3,7 @@ package view;
 import Controller.ControllerMenu;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
+import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
@@ -16,7 +17,8 @@ import java.io.File;
 public class ViewMenu {
     private Group root;
     private ImageView imgBg;
-    private Text jouer, option, quitter, titre,bonus;
+    private Button jouer, bonus, quitter;
+    private Text titre;
     private Menu menu;
 
     public ViewMenu(Group root, Menu menu) {
@@ -26,6 +28,7 @@ public class ViewMenu {
         texteMenu();
         musicMenu();
     }
+
     private void initBackground() {
         imgBg = new ImageView("Asset/Images/wallpaper-pacman.jpg");
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getBounds();
@@ -36,32 +39,33 @@ public class ViewMenu {
     private void texteMenu(){
 
 
-        titre = new Text(1000, 100, "PACMAN");
+        titre = new Text(800, 200,"PUCKMAN");
 
         titre.setStyle(" -fx-font: 100px Tahoma;-fx-fill: " +
                 "linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);" +
                 "-fx-stroke: black;");
 
         ///
-        jouer = new Text(1300, 300,"Jouer");
-        jouer.setStyle(" -fx-font: 50px Tahoma;-fx-fill: " +
-                "linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);" +
-                "-fx-stroke: black;");
+        jouer = new Button("Jouer");
+        jouer.setLayoutX(1200);
+        jouer.setLayoutY(300);
+        jouer.setStyle(" -fx-font: 50px Tahoma;"+
+                "-fx-background-radius: 20;");
         ///
-        option = new Text(1300, 500, "Options");
-        option.setStyle(" -fx-font: 50px Tahoma;-fx-fill: " +
-                "linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);" +
-                "-fx-stroke: black;");
+
         /////
-        bonus = new Text(1300, 700, "Bonus");
-        bonus.setStyle(" -fx-font: 50px Tahoma;-fx-fill: " +
-                "linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);" +
-                "-fx-stroke: black;");
+        bonus = new Button("Bonus");
+        bonus.setLayoutX(1200);
+        bonus.setLayoutY(500);
+        bonus.setStyle(" -fx-font: 50px Tahoma;"+
+                "-fx-background-radius: 20;");
+
         ////
-        quitter = new Text(1300, 900, "Quitter");
-        quitter.setStyle(" -fx-font: 50px Tahoma;-fx-fill: " +
-                "linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);" +
-                "-fx-stroke: black;");
+        quitter = new Button("Quitter");
+        quitter.setLayoutX(1200);
+        quitter.setLayoutY(700);
+        quitter.setStyle(" -fx-font: 50px Tahoma;"+
+                "-fx-background-radius: 20;");
         ////
 
 
@@ -82,26 +86,25 @@ public class ViewMenu {
         root.getChildren().addAll(imgBg);
         root.getChildren().add(titre);
         root.getChildren().add(jouer);
-        root.getChildren().add(option);
         root.getChildren().add(bonus);
         root.getChildren().add(quitter);
 
     }
-    public Text getLancerJeu() {
+    public Button getLancerJeu() {
         return jouer;
     }
 
 
-    public Text getLancerOption(){
-        return option;
+    public Button getLancerOption(){
+        return bonus;
     }
-    public Text getLancerQuitter(){
+    public Button getLancerQuitter(){
         return quitter;
     }
 
     void setEvents(ControllerMenu controllerMenu){
         jouer.setOnMouseClicked(controllerMenu);
-        option.setOnMouseClicked(controllerMenu);
+        bonus.setOnMouseClicked(controllerMenu);
         quitter.setOnMouseClicked(controllerMenu);
     }
 }

@@ -4,8 +4,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
-import view.ViewHandler;
-import view.ViewJeu;
 
 public class ControllerPlayer {
 
@@ -19,10 +17,11 @@ public class ControllerPlayer {
     private double axeY;
     private ImageView pacman;
 
-    public ControllerPlayer(ViewHandler viewHandler, ViewJeu viewJeu, Scene scene, Group root) {
+    public ControllerPlayer(Scene scene, Group root) {
         this.scene = scene;
         this.root = root;
         pacman = new ImageView("src/Asset/Images/puckman.png");
+        root = new Group(pacman);
         this.scene.setOnKeyPressed(e -> {//controle clavier
             switch (e.getCode()) {
                 case UP:
@@ -34,6 +33,7 @@ public class ControllerPlayer {
                     moveLEFT(axeX);
                     break;
                 case RIGHT:
+                    System.out.println("fleche");
                     axeX = axeX + 1;
                     moveRIGHT(axeX);
                     break;
@@ -45,19 +45,15 @@ public class ControllerPlayer {
 
     }
 
+
     public void moveRIGHT(double axeX) {
         this.axeX = axeX;
-        pacman.relocate(axeX, axeY);
-        pacman.setFocusTraversable(true);
-        root.requestFocus();
-        root.getChildren().add(pacman);
+
     }
 
     public void moveLEFT(double axeX) {
         this.axeX = axeX;
-        pacman.relocate(axeX, axeY);
-        pacman.setFocusTraversable(true);
-        root.requestFocus();
-        root.getChildren().add(pacman);
+
+
     }
 }

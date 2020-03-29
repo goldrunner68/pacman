@@ -1,6 +1,7 @@
 package view;
 
 import Controller.ControllerMenu;
+import Controller.ControllerMenuBonus;
 import Controller.ControllerPlayer;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -16,7 +17,7 @@ public class ViewHandler extends Application {
     private Stage primaryStage;
     private ViewMenu viewMenu;
     private ViewJeu viewJeu;
-    private ViewOption viewOption;
+    private ViewBonus viewOption;
 
 
 
@@ -29,12 +30,12 @@ public class ViewHandler extends Application {
         Scene scene = new Scene(root, screenWidth, screenHeight, Color.BLACK);
 
         Menu menu = new Menu();
-        this.viewMenu = new ViewMenu(root,menu);
+        this.viewMenu = new ViewMenu(root, menu);
         viewJeu = new ViewJeu(root);
-        viewOption = new ViewOption(root);
+        viewOption = new ViewBonus(root);
         ControllerMenu controllerMenu = new ControllerMenu(this, menu);
-        ControllerMenu controllerOption = new ControllerMenu(this, menu);
-        ControllerPlayer controllerPlayer = new ControllerPlayer(this, viewJeu, scene, root);
+        ControllerMenuBonus controllerMenuBonus = new ControllerMenuBonus(this, menu);
+        ControllerPlayer controllerPlayer = new ControllerPlayer(scene, root);
 
         //controllerJeu = new ControllerJeu(this);
         afficherMenuPrincipal();
@@ -48,35 +49,41 @@ public class ViewHandler extends Application {
 
 
     //Getters et Setters
-    public void setEventHandlerMenu(ControllerMenu controllerMenu){
+    public void setEventHandlerMenu(ControllerMenu controllerMenu) {
         viewMenu.setEvents(controllerMenu);
 
     }
 
-
     public Stage getPrimaryStage() {
         return primaryStage;
     }
-    public void afficherMenuPrincipal(){
+
+
+    public void afficherMenuPrincipal() {
         viewMenu.setVueMenu();
     }
-    public void setVueJeu(){
+
+    public void setVueJeu() {
+        System.out.println("clic btn jeu");
         viewJeu.setVueJeu();
     }
+
     public void setVueOption() {
+        System.out.println("clic btn option");
         viewOption.setVueOption();
     }
 
-    public ViewMenu getViewMenu() {
+    public ViewMenu getVueMenu() {
         return viewMenu;
     }
-    public ViewJeu getViewJeu(){
+
+    public ViewJeu getVueJeu() {
         return viewJeu;
     }
-    public ViewOption getViewOption(){
+
+    public ViewBonus getVueBonus() {
         return viewOption;
     }
-
 
 
 }

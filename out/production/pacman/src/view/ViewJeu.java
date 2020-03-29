@@ -1,10 +1,10 @@
 package view;
 
 
+import Controller.ControllerPlayer;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
-import javafx.scene.control.Menu;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -16,14 +16,16 @@ import java.util.ArrayList;
 
 public class ViewJeu {
 
+    private ViewHandler viewHandler;
+    private  ViewJeu viewJeu;
     private Group root;
     private ImageView imageDeFond;
-    private  ImageView pacman;
+    private ImageView pacman;
     private ArrayList<Integer> niveau1;
     private Model univers;
-    private Text score,timeLaps;
+    private Text score, timeLaps;
     private Scene scene;
-    private int valx,valy;
+    private int valx, valy;
 
 
     //
@@ -36,9 +38,6 @@ public class ViewJeu {
         timeAffichage();
         setVueJeu();
     }
-
-
-
 
     private void initBackground() {
         univers = new Model(root,niveau1);// le tableau du niveau construit
@@ -66,12 +65,7 @@ public class ViewJeu {
         timeLaps.setFill(Color.GREEN);
         timeLaps.setX(970);
         timeLaps.setY(150);
-
-
-
     }
-
-
 
     public void setVueJeu() {
         root.getChildren().clear();
@@ -80,10 +74,7 @@ public class ViewJeu {
         root.getChildren().add(timeLaps);
         univers.constructionLevel();// le tableau du niveau construit
 
-
     }
-
-
 
         }
 

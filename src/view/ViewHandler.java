@@ -1,6 +1,7 @@
 package view;
 
 import Controller.ControllerMenu;
+import Controller.ControllerMenuBonus;
 import Controller.ControllerPlayer;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -16,7 +17,7 @@ public class ViewHandler extends Application {
     private Stage primaryStage;
     private ViewMenu viewMenu;
     private ViewJeu viewJeu;
-    private ViewOption viewOption;
+    private ViewBonus viewOption;
 
 
     @Override
@@ -30,10 +31,10 @@ public class ViewHandler extends Application {
         Menu menu = new Menu();
         this.viewMenu = new ViewMenu(root, menu);
         viewJeu = new ViewJeu(root);
-        viewOption = new ViewOption(root);
+        viewOption = new ViewBonus(root);
         ControllerMenu controllerMenu = new ControllerMenu(this, menu);
-        ControllerMenu controllerOption = new ControllerMenu(this, menu);
-        ControllerPlayer controllerPlayer = new ControllerPlayer(this, viewJeu, scene, root);
+        ControllerMenuBonus controllerMenuBonus = new ControllerMenuBonus(this, menu);
+        ControllerPlayer controllerPlayer = new ControllerPlayer(scene, root);
 
         //controllerJeu = new ControllerJeu(this);
         afficherMenuPrincipal();
@@ -52,32 +53,34 @@ public class ViewHandler extends Application {
 
     }
 
-
     public Stage getPrimaryStage() {
         return primaryStage;
     }
+
 
     public void afficherMenuPrincipal() {
         viewMenu.setVueMenu();
     }
 
     public void setVueJeu() {
+        System.out.println("clic btn jeu");
         viewJeu.setVueJeu();
     }
 
     public void setVueOption() {
+        System.out.println("clic btn option");
         viewOption.setVueOption();
     }
 
-    public ViewMenu getViewMenu() {
+    public ViewMenu getVueMenu() {
         return viewMenu;
     }
 
-    public ViewJeu getViewJeu() {
+    public ViewJeu getVueJeu() {
         return viewJeu;
     }
 
-    public ViewOption getViewOption() {
+    public ViewBonus getVueBonus() {
         return viewOption;
     }
 
