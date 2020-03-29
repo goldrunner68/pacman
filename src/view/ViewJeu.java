@@ -25,9 +25,15 @@ public class ViewJeu {
     private Model univers;
     private Text score, timeLaps;
     private Scene scene;
-    private int valx, valy;
+
     private double cp;
     private double axeX, axeY;
+    private static double minX = 670;
+    private static double minY = 364;
+    private static double maxX = 1246;
+    private static double maxY = 812;
+    private double moveX;
+    private double moveY;
 
     //
 
@@ -70,29 +76,48 @@ public class ViewJeu {
         timeLaps.setY(150);
     }
 
-    public void personnage() {
+    public void personnage() {// affichage, controlle et deplacement
+
+        moveX = minX + (axeX * 8);
+        moveY = minY + (axeY * 8);
         pacman = new ImageView("src/Asset/Images/puckman.png");
+        pacman.relocate(moveX, moveY);
         scene.setOnKeyPressed(e -> {//controle clavier
+
             switch (e.getCode()) {
                 case UP:
-                    axeY--;
-                    pacman.relocate(axeX * 10, axeY * 10);
+                    if (moveY >= minY) {
+                        axeY--;
+                        moveY = minY + (axeY * 8);
+                    }
+                    System.out.println(moveY);
                     break;
                 case DOWN:
-                    axeY++;
-                    pacman.relocate(axeX * 10, axeY * 10);
+                    if (moveY <= maxY) {
+                        axeY++;
+                        moveY = minY + (axeY * 8);
+                    }
+                    System.out.println(moveY);
                     break;
                 case LEFT:
-                    axeX--;
-                    pacman.relocate(axeX * 10, axeY * 10);
+                    if (moveX >= minX) {
+                        axeX--;
+                        moveX = minX + (axeX * 8);
+                    }
+                    System.out.println(moveX);
                     break;
                 case RIGHT:
-                    axeX = axeX + 1;
-                    pacman.relocate(axeX * 10, axeY * 10);
+                    if (moveX <= maxX) {
+                        axeX++;
+                        moveX = minX + (axeX * 8);
+                    }
+                    System.out.println(moveX);
+
                     break;
                 default:
 
             }
+            pacman.relocate(moveX, moveY);
         });
 
 
@@ -105,6 +130,7 @@ public class ViewJeu {
         root.getChildren().add(timeLaps);
         univers.constructionLevel();// le tableau du niveau construit
         root.getChildren().add(pacman);
+
     }
 
         }

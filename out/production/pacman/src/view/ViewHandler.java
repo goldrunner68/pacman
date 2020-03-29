@@ -29,7 +29,7 @@ public class ViewHandler extends Application {
 
         Menu menu = new Menu();
         this.viewMenu = new ViewMenu(root, menu);
-        viewJeu = new ViewJeu(root,scene);
+        viewJeu = new ViewJeu(root, scene);
         viewOption = new ViewBonus(root);
         ControllerMenu controllerMenu = new ControllerMenu(this, menu);
         ControllerMenuBonus controllerMenuBonus = new ControllerMenuBonus(this, menu);

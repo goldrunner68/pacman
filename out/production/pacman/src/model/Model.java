@@ -31,10 +31,11 @@ public class Model {
         return plateau;
     }
     public void constructionLevel(){
-        // axe Y
-        int valeurY = 300;
         // axe X
         int valeuX = 670;
+        // axe Y
+        int valeurY = 300;
+
         // j ajoute dans un arrayList la valeur INT du tableau
         int[] plateau = level();
         niveau1 = new ArrayList<>();
@@ -82,4 +83,5 @@ public class Model {
 
         }
     }
+
 }
