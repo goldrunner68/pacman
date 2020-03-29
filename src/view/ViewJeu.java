@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class ViewJeu {
 
+
     private ViewHandler viewHandler;
     private ViewJeu viewJeu;
     private Group root;
@@ -25,17 +26,21 @@ public class ViewJeu {
     private Text score, timeLaps;
     private Scene scene;
     private int valx, valy;
-
+    private double cp;
+    private double axeX, axeY;
 
     //
 
 
-    public ViewJeu(Group root) {
+    public ViewJeu(Group root, Scene scene) {
         this.root = root;
+        this.scene = scene;
         initBackground();
         scoreAffichage();
         timeAffichage();
+        personnage();
         setVueJeu();
+
     }
 
     private void initBackground() {
@@ -47,23 +52,50 @@ public class ViewJeu {
 
     }
     public void scoreAffichage(){
-
         score = new Text("SCORE : 00000");
         score.setFont(Font.font ("Verdana", 30));
         score.setFill(Color.GREEN);
         score.setX(680);
         score.setY(150);
    }
-    public void timeAffichage(){
+
+    public void timeAffichage() {
 
         System.out.println();
         timeLaps = new Text();
-
         timeLaps.setText("time");
-        timeLaps.setFont(Font.font ("Verdana", 30));
+        timeLaps.setFont(Font.font("Verdana", 30));
         timeLaps.setFill(Color.GREEN);
         timeLaps.setX(970);
         timeLaps.setY(150);
+    }
+
+    public void personnage() {
+        pacman = new ImageView("src/Asset/Images/puckman.png");
+        scene.setOnKeyPressed(e -> {//controle clavier
+            switch (e.getCode()) {
+                case UP:
+                    axeY--;
+                    pacman.relocate(axeX * 10, axeY * 10);
+                    break;
+                case DOWN:
+                    axeY++;
+                    pacman.relocate(axeX * 10, axeY * 10);
+                    break;
+                case LEFT:
+                    axeX--;
+                    pacman.relocate(axeX * 10, axeY * 10);
+                    break;
+                case RIGHT:
+                    axeX = axeX + 1;
+                    pacman.relocate(axeX * 10, axeY * 10);
+                    break;
+                default:
+
+            }
+        });
+
+
     }
 
     public void setVueJeu() {
@@ -72,7 +104,7 @@ public class ViewJeu {
         root.getChildren().add(score);
         root.getChildren().add(timeLaps);
         univers.constructionLevel();// le tableau du niveau construit
-
+        root.getChildren().add(pacman);
     }
 
         }

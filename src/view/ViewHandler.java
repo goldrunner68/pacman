@@ -2,7 +2,6 @@ package view;
 
 import Controller.ControllerMenu;
 import Controller.ControllerMenuBonus;
-import Controller.ControllerPlayer;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -30,11 +29,10 @@ public class ViewHandler extends Application {
 
         Menu menu = new Menu();
         this.viewMenu = new ViewMenu(root, menu);
-        viewJeu = new ViewJeu(root);
+        viewJeu = new ViewJeu(root, scene);
         viewOption = new ViewBonus(root);
         ControllerMenu controllerMenu = new ControllerMenu(this, menu);
         ControllerMenuBonus controllerMenuBonus = new ControllerMenuBonus(this, menu);
-        ControllerPlayer controllerPlayer = new ControllerPlayer(scene, root);
 
         //controllerJeu = new ControllerJeu(this);
         afficherMenuPrincipal();
