@@ -32,6 +32,8 @@ public class ViewJeu {
     private double moveX=670,moveY=560;
     private int maxX=1246;
     private int minX=670;
+    private int minY=500;
+    private int maxY=900;
     private int vitessePacman=8;
 
     private String url = "src/Asset/Images/puckman.png";
@@ -77,7 +79,6 @@ public class ViewJeu {
         timeLaps.setX(970);
         timeLaps.setY(150);
     }
-
     public void personnage() {// affichage, controlle et deplacement
 
         pac = new Image(url);
@@ -88,7 +89,10 @@ public class ViewJeu {
             switch (e.getCode()) {
                 case UP:
 
-                       moveY-=vitessePacman;
+                    moveY-=vitessePacman;
+                    if (moveY<424){
+                        moveY=752;
+                    }
                         url = "src/Asset/Images/puckmanHaut.png";
                         pacman.setImage(new Image(url));//change image
 
@@ -96,6 +100,9 @@ public class ViewJeu {
 
                 case DOWN:
                     moveY+=vitessePacman;
+                    if (moveY>752){
+                        moveY=424;
+                    }
                         url = "src/Asset/Images/puckmanBas.png";
                         pacman.setImage(new Image(url));//change image
 
@@ -124,7 +131,7 @@ public class ViewJeu {
             }
 
                     pacman.relocate(moveX, moveY);
-                    System.out.println(moveX);
+                    System.out.println(moveX+" "+moveY);
                 }
 
         );
