@@ -90,7 +90,7 @@ public class ViewJeu {
                 case UP:
 
                     moveY-=vitessePacman;
-                    if (moveY<424){
+                    if (moveY%424==0){
                         moveY=752;
                     }
                         url = "src/Asset/Images/puckmanHaut.png";
@@ -100,7 +100,7 @@ public class ViewJeu {
 
                 case DOWN:
                     moveY+=vitessePacman;
-                    if (moveY>752){
+                    if (moveY%752==0){
                         moveY=424;
                     }
                         url = "src/Asset/Images/puckmanBas.png";
@@ -111,7 +111,7 @@ public class ViewJeu {
                 case LEFT:
 
                    moveX-=vitessePacman;
-                    if (moveX<minX){
+                    if (moveX%minX==0){
                         moveX=maxX;
                     }
                     url = "src/Asset/Images/puckmanGauche.png";
@@ -121,7 +121,7 @@ public class ViewJeu {
 
                 case RIGHT:
                   moveX+=vitessePacman;
-                 if (moveX>maxX){
+                 if (moveX%maxX==0){
                      moveX=minX;
                  }
                     url = "src/Asset/Images/puckmanDroite.png";
