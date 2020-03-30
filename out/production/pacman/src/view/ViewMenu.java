@@ -43,12 +43,12 @@ public class ViewMenu {
 
 
         ///
-        jouer = new Button("Jouer",new ImageView(titre));;
+        jouer = new Button("Jouer", new ImageView(titre));
         jouer.setLayoutX(1200);
         jouer.setLayoutY(100);
         jouer.setStyle(" -fx-font: 50px Tahoma;" +
-                "-fx-background-color:BLACK;"+
-                "-fx-text-fill: white;"+
+                "-fx-background-color:BLACK;" +
+                "-fx-text-fill: white;" +
                 "-fx-background-radius: 20;");
         ///
 
@@ -57,8 +57,8 @@ public class ViewMenu {
         bonus.setLayoutX(1200);
         bonus.setLayoutY(500);
         bonus.setStyle(" -fx-font: 50px Tahoma;" +
-                "-fx-background-color:BLACK;"+
-                "-fx-text-fill: white;"+
+                "-fx-background-color:BLACK;" +
+                "-fx-text-fill: white;" +
                 "-fx-background-radius: 20;");
 
         ////
@@ -66,8 +66,8 @@ public class ViewMenu {
         quitter.setLayoutX(1200);
         quitter.setLayoutY(700);
         quitter.setStyle(" -fx-font: 50px Tahoma;" +
-                "-fx-background-color:BLACK;"+
-                "-fx-text-fill: white;"+
+                "-fx-background-color:BLACK;" +
+                "-fx-text-fill: white;" +
                 "-fx-background-radius: 20;");
         ////
 

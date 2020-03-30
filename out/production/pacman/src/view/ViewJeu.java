@@ -29,13 +29,11 @@ public class ViewJeu {
     private Scene scene;
     private double cp;
     private CarteDuMonde univers;
-    private double axeX, axeY;
-    private double minY = 560;//entree perso
-    private  double minX = 670;
-    private double maxX = 1246;
-    private  double maxY = 812;
-    private double moveX;
-    private double moveY;
+    private double moveX=670,moveY=560;
+    private int maxX=1246;
+    private int minX=670;
+    private int vitessePacman=8;
+
     private String url = "src/Asset/Images/puckman.png";
     private Image pac;
     private ImageView boule;
@@ -81,8 +79,7 @@ public class ViewJeu {
     }
 
     public void personnage() {// affichage, controlle et deplacement
-        moveX = minX + (axeX * 8);
-        moveY = minY + (axeY * 8);
+
         pac = new Image(url);
         pacman = new ImageView(pac);
         pacman.relocate(moveX, moveY);
@@ -90,49 +87,44 @@ public class ViewJeu {
 
             switch (e.getCode()) {
                 case UP:
-                    if (moveY >= 364) {
-                        axeY--;
+
+                       moveY-=vitessePacman;
                         url = "src/Asset/Images/puckmanHaut.png";
                         pacman.setImage(new Image(url));//change image
-                    }
 
                     break;
+
                 case DOWN:
-                    if (moveY <= maxY) {
-                        axeY++;
+                    moveY+=vitessePacman;
                         url = "src/Asset/Images/puckmanBas.png";
                         pacman.setImage(new Image(url));//change image
-
-                    }
 
                     break;
 
                 case LEFT:
-                    axeX--;
+
+                   moveX-=vitessePacman;
+                    if (moveX<minX){
+                        moveX=maxX;
+                    }
                     url = "src/Asset/Images/puckmanGauche.png";
                     pacman.setImage(new Image(url));//change image
-                    if (((moveX % 660) == 0)) {
-                        moveX = maxX;
-                        axeX = 0;
-
-                    }
 
                     break;
 
                 case RIGHT:
-                    axeX++;
+                  moveX+=vitessePacman;
+                 if (moveX>maxX){
+                     moveX=minX;
+                 }
                     url = "src/Asset/Images/puckmanDroite.png";
                     pacman.setImage(new Image(url));//change image
-                    if (((moveX % maxX) == 0)) {
-                        moveX = minX;
-                        axeX = 0;
-                    }
+
                     break;
             }
-            moveY = minY + (axeY * 8);
-            moveX = minX + (axeX * 8);
-            pacman.relocate(moveX, moveY);
-            System.out.println(moveX);
+
+                    pacman.relocate(moveX, moveY);
+                    System.out.println(moveX);
                 }
 
         );
