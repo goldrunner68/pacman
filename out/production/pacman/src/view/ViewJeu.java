@@ -1,12 +1,14 @@
 package view;
 
 
+
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
@@ -23,21 +25,21 @@ public class ViewJeu {
     private ImageView imageDeFond;
     private ImageView pacman;
     private ArrayList<Integer> niveau1;
-    private static double minY = 560;//entree perso
     private Text score, timeLaps;
     private Scene scene;
-
     private double cp;
-    private double axeX, axeY;
-    private static double minX = 670;
     private CarteDuMonde univers;
-    private static double maxX = 1246;
-    private static double maxY = 812;
+    private double axeX, axeY;
+    private double minY = 560;//entree perso
+    private  double minX = 670;
+    private double maxX = 1246;
+    private  double maxY = 812;
     private double moveX;
     private double moveY;
     private String url = "src/Asset/Images/puckman.png";
     private Image pac;
     private ImageView boule;
+    private Rectangle rectangle;
     //
 
 
@@ -92,11 +94,8 @@ public class ViewJeu {
                         axeY--;
                         url = "src/Asset/Images/puckmanHaut.png";
                         pacman.setImage(new Image(url));//change image
-
                     }
-                    moveY = minY + (axeY * 8);
-                    moveX = minX + (axeX * 8);
-                    pacman.relocate(moveX, moveY);
+
                     break;
                 case DOWN:
                     if (moveY <= maxY) {
@@ -105,23 +104,19 @@ public class ViewJeu {
                         pacman.setImage(new Image(url));//change image
 
                     }
-                    moveY = minY + (axeY * 8);
-                    moveX = minX + (axeX * 8);
-                    pacman.relocate(moveX, moveY);
+
                     break;
 
                 case LEFT:
                     axeX--;
                     url = "src/Asset/Images/puckmanGauche.png";
                     pacman.setImage(new Image(url));//change image
-                    if (((moveX % 670) == 0)) {
-                        moveX = 1246;
+                    if (((moveX % 660) == 0)) {
+                        moveX = maxX;
                         axeX = 0;
 
                     }
-                    moveY = minY + (axeY * 8);
-                    moveX = minX + (axeX * 8);
-                    pacman.relocate(moveX, moveY);
+
                     break;
 
                 case RIGHT:
@@ -132,16 +127,12 @@ public class ViewJeu {
                         moveX = minX;
                         axeX = 0;
                     }
-                    moveY = minY + (axeY * 8);
-                    moveX = minX + (axeX * 8);
-                    pacman.relocate(moveX, moveY);
                     break;
-
-
             }
-
-                    System.out.println("moveX " + moveX + " ");
-
+            moveY = minY + (axeY * 8);
+            moveX = minX + (axeX * 8);
+            pacman.relocate(moveX, moveY);
+            System.out.println(moveX);
                 }
 
         );

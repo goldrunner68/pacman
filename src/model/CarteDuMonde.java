@@ -3,7 +3,7 @@ package model;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Circle;
 
 import java.util.ArrayList;
 
@@ -61,24 +61,24 @@ public class CarteDuMonde {
                 brique.setY(valeurY + ligne);
                 brique.setFitWidth(64);
                 brique.setFitHeight(64);
-                Rectangle rectangle = new Rectangle();// rectangle pour collision
-                rectangle.setX(valeuX + col);
-                rectangle.setY(valeurY + ligne);
-                rectangle.setWidth(64);
-                rectangle.setHeight(64);
-                rectangle.setFill(Color.TRANSPARENT);
-
                 root.getChildren().add(brique);
-                root.getChildren().add(rectangle);
+
             }
-            if (niveau1.get(index).equals(2)){
+            if (niveau1.get(index).equals(2)) {
                 // si 2 affiche une boule
                 ImageView boule = new ImageView("Asset/Images/boule.png");
-                boule.setX(valeuX +col);
-                boule.setY(valeurY +ligne);
+                boule.setX(valeuX + col);
+                boule.setY(valeurY + ligne);
                 boule.setFitWidth(64);
                 boule.setFitHeight(64);
+                Circle boule2 = new Circle();
+                boule2.setCenterX((valeuX + col) + 32);//32 pour correspondre a boule image
+                boule2.setCenterY((valeurY + ligne) + 32);//32 pour correspondre a boule image
+                boule2.setRadius(8);
+                boule2.setFill(Color.BLUE);
+
                 root.getChildren().add(boule);
+                root.getChildren().add(boule2);
             }
             if (niveau1.get(index).equals(4)){
                 // si 4 affiche une boule de feu
