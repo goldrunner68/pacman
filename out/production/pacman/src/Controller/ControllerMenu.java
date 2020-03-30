@@ -20,7 +20,7 @@ public class ControllerMenu implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent event){
         if (event.getSource().equals(launcher.getVueMenu().getLancerJeu())) {
-            launcher.setVueJeu();
+            launcher.afficherJeu();
         } else if (event.getSource().equals(launcher.getVueMenu().getLancerOption())) {
             launcher.setVueOption();
 

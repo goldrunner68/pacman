@@ -36,10 +36,10 @@ public class ViewMenu {
         imgBg.setFitWidth((int) primaryScreenBounds.getWidth());
     }
 
-    private void texteMenu(){
+    private void texteMenu() {
 
 
-        titre = new Text(800, 200,"PUCKMAN");
+        titre = new Text(800, 200, "PUCKMAN");
 
         titre.setStyle(" -fx-font: 100px Tahoma;-fx-fill: " +
                 "linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);" +
@@ -49,7 +49,7 @@ public class ViewMenu {
         jouer = new Button("Jouer");
         jouer.setLayoutX(1200);
         jouer.setLayoutY(300);
-        jouer.setStyle(" -fx-font: 50px Tahoma;"+
+        jouer.setStyle(" -fx-font: 50px Tahoma;" +
                 "-fx-background-radius: 20;");
         ///
 
@@ -57,14 +57,14 @@ public class ViewMenu {
         bonus = new Button("Bonus");
         bonus.setLayoutX(1200);
         bonus.setLayoutY(500);
-        bonus.setStyle(" -fx-font: 50px Tahoma;"+
+        bonus.setStyle(" -fx-font: 50px Tahoma;" +
                 "-fx-background-radius: 20;");
 
         ////
         quitter = new Button("Quitter");
         quitter.setLayoutX(1200);
         quitter.setLayoutY(700);
-        quitter.setStyle(" -fx-font: 50px Tahoma;"+
+        quitter.setStyle(" -fx-font: 50px Tahoma;" +
                 "-fx-background-radius: 20;");
         ////
 
@@ -75,30 +75,32 @@ public class ViewMenu {
     private void musicMenu(){
 
     }
-   public void setVueMenu(){
+   public void setVueMenuRoot(){
         root.getChildren().clear();
         final File file = new File("src/Asset/Sons/pacman_beginning.wav");
         final Media media = new Media(file.toURI().toString());
         final MediaPlayer mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setAutoPlay(true);
-        MediaView mediaView = new MediaView(mediaPlayer);
-        root.getChildren().add(mediaView);
-        root.getChildren().addAll(imgBg);
-        root.getChildren().add(titre);
-        root.getChildren().add(jouer);
-        root.getChildren().add(bonus);
-        root.getChildren().add(quitter);
+       mediaPlayer.setAutoPlay(true);
+       MediaView mediaView = new MediaView(mediaPlayer);
+       root.getChildren().add(mediaView);
+       root.getChildren().addAll(imgBg);
+       root.getChildren().add(titre);
+       root.getChildren().add(jouer);
+       root.getChildren().add(bonus);
+       root.getChildren().add(quitter);
 
-    }
+   }
+
     public Button getLancerJeu() {
         return jouer;
     }
 
 
-    public Button getLancerOption(){
+    public Button getLancerOption() {
         return bonus;
     }
-    public Button getLancerQuitter(){
+
+    public Button getLancerQuitter() {
         return quitter;
     }
 

@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Screen;
-import model.Model;
+import model.CarteDuMonde;
 
 import java.util.ArrayList;
 
@@ -23,21 +23,21 @@ public class ViewJeu {
     private ImageView imageDeFond;
     private ImageView pacman;
     private ArrayList<Integer> niveau1;
-    private Model univers;
+    private static double minY = 560;//entree perso
     private Text score, timeLaps;
     private Scene scene;
 
     private double cp;
     private double axeX, axeY;
     private static double minX = 670;
-    private static double minY = 364;
+    private CarteDuMonde univers;
     private static double maxX = 1246;
     private static double maxY = 812;
     private double moveX;
     private double moveY;
     private String url = "src/Asset/Images/puckman.png";
     private Image pac;
-
+    private ImageView boule;
     //
 
 
@@ -48,12 +48,12 @@ public class ViewJeu {
         scoreAffichage();
         timeAffichage();
         personnage();
-        setVueJeu();
+        setVueJeuRoot();
 
     }
 
     private void initBackground() {
-        univers = new Model(root,niveau1);// le tableau du niveau construit
+        univers = new CarteDuMonde(root, niveau1);// le tableau du niveau construit
         imageDeFond = new ImageView("Asset/Images/pacmanFondInGame.jpg");
         Rectangle2D primaryScreenBounds = Screen.getPrimary().getBounds();
         imageDeFond.setFitHeight((int) primaryScreenBounds.getHeight());
@@ -70,7 +70,6 @@ public class ViewJeu {
 
     public void timeAffichage() {
 
-        System.out.println();
         timeLaps = new Text();
         timeLaps.setText("time");
         timeLaps.setFont(Font.font("Verdana", 30));
@@ -80,64 +79,77 @@ public class ViewJeu {
     }
 
     public void personnage() {// affichage, controlle et deplacement
-
         moveX = minX + (axeX * 8);
         moveY = minY + (axeY * 8);
         pac = new Image(url);
         pacman = new ImageView(pac);
-
-
         pacman.relocate(moveX, moveY);
         scene.setOnKeyPressed(e -> {//controle clavier
 
             switch (e.getCode()) {
                 case UP:
-                    if (moveY >= minY) {
+                    if (moveY >= 364) {
                         axeY--;
                         url = "src/Asset/Images/puckmanHaut.png";
                         pacman.setImage(new Image(url));//change image
-                        moveY = minY + (axeY * 8);
+
                     }
-                    System.out.println(moveY);
+                    moveY = minY + (axeY * 8);
+                    moveX = minX + (axeX * 8);
+                    pacman.relocate(moveX, moveY);
                     break;
                 case DOWN:
                     if (moveY <= maxY) {
                         axeY++;
                         url = "src/Asset/Images/puckmanBas.png";
                         pacman.setImage(new Image(url));//change image
-                        moveY = minY + (axeY * 8);
-                    }
-                    System.out.println(moveY);
-                    break;
-                case LEFT:
-                    if (moveX >= minX) {
-                        axeX--;
-                        url = "src/Asset/Images/puckmanGauche.png";
-                        pacman.setImage(new Image(url));//change image
-                        moveX = minX + (axeX * 8);
-                    }
-                    System.out.println(moveX);
-                    break;
-                case RIGHT:
-                    if (moveX <= maxX) {
-                        axeX++;
-                        url = "src/Asset/Images/puckmanDroite.png";
-                        pacman.setImage(new Image(url));//change image
-                        moveX = minX + (axeX * 8);
-                    }
-                    System.out.println(moveX);
 
+                    }
+                    moveY = minY + (axeY * 8);
+                    moveX = minX + (axeX * 8);
+                    pacman.relocate(moveX, moveY);
                     break;
-                default:
+
+                case LEFT:
+                    axeX--;
+                    url = "src/Asset/Images/puckmanGauche.png";
+                    pacman.setImage(new Image(url));//change image
+                    if (((moveX % 670) == 0)) {
+                        moveX = 1246;
+                        axeX = 0;
+
+                    }
+                    moveY = minY + (axeY * 8);
+                    moveX = minX + (axeX * 8);
+                    pacman.relocate(moveX, moveY);
+                    break;
+
+                case RIGHT:
+                    axeX++;
+                    url = "src/Asset/Images/puckmanDroite.png";
+                    pacman.setImage(new Image(url));//change image
+                    if (((moveX % maxX) == 0)) {
+                        moveX = minX;
+                        axeX = 0;
+                    }
+                    moveY = minY + (axeY * 8);
+                    moveX = minX + (axeX * 8);
+                    pacman.relocate(moveX, moveY);
+                    break;
+
 
             }
-            pacman.relocate(moveX, moveY);
-        });
+
+                    System.out.println("moveX " + moveX + " ");
+
+                }
+
+        );
 
 
     }
 
-    public void setVueJeu() {
+    public void setVueJeuRoot() {
         root.getChildren().clear();
         root.getChildren().add(imageDeFond);
         root.getChildren().add(score);

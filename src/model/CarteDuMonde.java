@@ -2,20 +2,22 @@ package model;
 
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 
-public class Model {
+public class CarteDuMonde {
     private Group root;
     private ArrayList<Integer> niveau1;
 
-    public Model(Group root, ArrayList<Integer> niveau1) {
+    public CarteDuMonde(Group root, ArrayList<Integer> niveau1) {
         this.root = root;
 
         this.niveau1 = niveau1;
     }
 
-// creation du niveau dans un tableau
+    // creation du niveau dans un tableau
     private int[] level(){
         int[] plateau = {
                 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
@@ -52,14 +54,22 @@ public class Model {
                 col =0;
             }
 
-            if (niveau1.get(index).equals(1)){
+            if (niveau1.get(index).equals(1)) {
                 // si valeur 1 j'affiche une brique
                 ImageView brique = new ImageView("Asset/Images/Brick_Block.png");
-                brique.setX(valeuX +col);
-                brique.setY(valeurY +ligne);
+                brique.setX(valeuX + col);
+                brique.setY(valeurY + ligne);
                 brique.setFitWidth(64);
                 brique.setFitHeight(64);
+                Rectangle rectangle = new Rectangle();// rectangle pour collision
+                rectangle.setX(valeuX + col);
+                rectangle.setY(valeurY + ligne);
+                rectangle.setWidth(64);
+                rectangle.setHeight(64);
+                rectangle.setFill(Color.TRANSPARENT);
+
                 root.getChildren().add(brique);
+                root.getChildren().add(rectangle);
             }
             if (niveau1.get(index).equals(2)){
                 // si 2 affiche une boule

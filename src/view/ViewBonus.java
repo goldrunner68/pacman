@@ -12,17 +12,21 @@ import javafx.stage.Screen;
 public class ViewBonus {
     private Group root;
     private Scene scene;
-    private ImageView imageDeBonus;
+    private ImageView imageDeBonus, affichePub;
     private Button jouer;
     private Text option;
     private Text bonus;
+    private Text histoire;
     private Button quitter;
+
 
     public ViewBonus(Group root) {
         this.root = root;
         initBackground();
         texteMenuBonus();
+        historyAffichage();
         setVueOption();
+
     }
 
     private void initBackground() {
@@ -32,6 +36,12 @@ public class ViewBonus {
         imageDeBonus.setFitHeight((int) primaryScreenBounds.getHeight());
         imageDeBonus.setFitWidth((int) primaryScreenBounds.getWidth());
 
+    }
+
+    public void historyAffichage() {
+        affichePub = new ImageView("src/Asset/Images/1.png");
+        affichePub.setX(100);
+        affichePub.setY(0);
     }
 
     private void texteMenuBonus() {
@@ -60,6 +70,7 @@ public class ViewBonus {
         root.getChildren().clear();
         root.getChildren().add(imageDeBonus);
         root.getChildren().add(jouer);
+        root.getChildren().add(affichePub);
         root.getChildren().add(quitter);
 
     }
@@ -73,9 +84,9 @@ public class ViewBonus {
         return quitter;
     }
 
-    void setEvents(ControllerMenuBonus controllerMenu) {
-        jouer.setOnMouseClicked(controllerMenu);
-        option.setOnMouseClicked(controllerMenu);
-        quitter.setOnMouseClicked(controllerMenu);
+    void setEvents(ControllerMenuBonus controllerMenuBonus) {
+        jouer.setOnMouseClicked(controllerMenuBonus);
+
+        quitter.setOnMouseClicked(controllerMenuBonus);
     }
 }

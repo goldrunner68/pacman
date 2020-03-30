@@ -72,24 +72,26 @@ public class ViewMenu {
         ////
 
     }
-    private void musicMenu(){
+
+    private void musicMenu() {
 
     }
-   public void setVueMenu(){
+
+    public void setVueMenuRoot() {
         root.getChildren().clear();
         final File file = new File("src/Asset/Sons/pacman_beginning.wav");
         final Media media = new Media(file.toURI().toString());
         final MediaPlayer mediaPlayer = new MediaPlayer(media);
-       mediaPlayer.setAutoPlay(true);
-       MediaView mediaView = new MediaView(mediaPlayer);
-       root.getChildren().add(mediaView);
-       root.getChildren().addAll(imgBg);
-       root.getChildren().add(titre);
-       root.getChildren().add(jouer);
-       root.getChildren().add(bonus);
-       root.getChildren().add(quitter);
+        mediaPlayer.setAutoPlay(true);
+        MediaView mediaView = new MediaView(mediaPlayer);
+        root.getChildren().add(mediaView);
+        root.getChildren().addAll(imgBg);
+        root.getChildren().add(titre);
+        root.getChildren().add(jouer);
+        root.getChildren().add(bonus);
+        root.getChildren().add(quitter);
 
-   }
+    }
 
     public Button getLancerJeu() {
         return jouer;

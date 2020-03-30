@@ -16,7 +16,7 @@ public class ViewHandler extends Application {
     private Stage primaryStage;
     private ViewMenu viewMenu;
     private ViewJeu viewJeu;
-    private ViewBonus viewOption;
+    private ViewBonus viewBonus;
 
 
     @Override
@@ -30,11 +30,10 @@ public class ViewHandler extends Application {
         Menu menu = new Menu();
         this.viewMenu = new ViewMenu(root, menu);
         viewJeu = new ViewJeu(root, scene);
-        viewOption = new ViewBonus(root);
+        viewBonus = new ViewBonus(root);
         ControllerMenu controllerMenu = new ControllerMenu(this, menu);
         ControllerMenuBonus controllerMenuBonus = new ControllerMenuBonus(this, menu);
-
-        //controllerJeu = new ControllerJeu(this);
+////////////////////////////////////////
         afficherMenuPrincipal();
         Music.playMainMenuMusic();
         primaryStage.setTitle("Pacman");
@@ -49,6 +48,13 @@ public class ViewHandler extends Application {
     public void setEventHandlerMenu(ControllerMenu controllerMenu) {
         viewMenu.setEvents(controllerMenu);
 
+
+    }
+
+    public void setEventHandlerMenuBonus(ControllerMenuBonus controllerMenuBonus) {
+        viewBonus.setEvents(controllerMenuBonus);
+
+
     }
 
     public Stage getPrimaryStage() {
@@ -57,17 +63,17 @@ public class ViewHandler extends Application {
 
 
     public void afficherMenuPrincipal() {
-        viewMenu.setVueMenu();
+        viewMenu.setVueMenuRoot();
     }
 
-    public void setVueJeu() {
-        System.out.println("clic btn jeu");
-        viewJeu.setVueJeu();
+    public void afficherJeu() {
+        System.out.println("clic btn jeu ");
+        viewJeu.setVueJeuRoot();
     }
 
     public void setVueOption() {
         System.out.println("clic btn option");
-        viewOption.setVueOption();
+        viewBonus.setVueOption();
     }
 
     public ViewMenu getVueMenu() {
@@ -79,7 +85,7 @@ public class ViewHandler extends Application {
     }
 
     public ViewBonus getVueBonus() {
-        return viewOption;
+        return viewBonus;
     }
 
 

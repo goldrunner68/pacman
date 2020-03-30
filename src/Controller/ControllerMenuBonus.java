@@ -13,6 +13,7 @@ public class ControllerMenuBonus implements EventHandler<MouseEvent> {
     public ControllerMenuBonus(ViewHandler launcher, Menu model) {
         this.launcher = launcher;
         this.model = model;
+        this.launcher.setEventHandlerMenuBonus(this);
     }
 
 
@@ -20,7 +21,7 @@ public class ControllerMenuBonus implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent event) {
         if (event.getSource().equals(launcher.getVueBonus().getLancerJeu())) {
-            launcher.setVueJeu();
+            launcher.afficherJeu();
 
         } else if (event.getSource().equals(launcher.getVueBonus().getLancerQuitter())) {
             launcher.getPrimaryStage().close();
