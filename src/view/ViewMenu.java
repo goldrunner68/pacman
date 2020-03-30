@@ -5,11 +5,11 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.Menu;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.scene.text.Text;
 import javafx.stage.Screen;
 
 import java.io.File;
@@ -18,7 +18,7 @@ public class ViewMenu {
     private Group root;
     private ImageView imgBg;
     private Button jouer, bonus, quitter;
-    private Text titre;
+    private Image titre;
     private Menu menu;
 
     public ViewMenu(Group root, Menu menu) {
@@ -39,17 +39,16 @@ public class ViewMenu {
     private void texteMenu() {
 
 
-        titre = new Text(800, 200, "PUCKMAN");
+        titre = new Image("Asset/Images/pacman_h7qq3c34.gif");
 
-        titre.setStyle(" -fx-font: 100px Tahoma;-fx-fill: " +
-                "linear-gradient(from 0% 0% to 100% 200%, repeat, aqua 0%, red 50%);" +
-                "-fx-stroke: black;");
 
         ///
-        jouer = new Button("Jouer");
+        jouer = new Button("Jouer", new ImageView(titre));
         jouer.setLayoutX(1200);
-        jouer.setLayoutY(300);
+        jouer.setLayoutY(100);
         jouer.setStyle(" -fx-font: 50px Tahoma;" +
+                "-fx-background-color:BLACK;" +
+                "-fx-text-fill: white;" +
                 "-fx-background-radius: 20;");
         ///
 
@@ -58,6 +57,8 @@ public class ViewMenu {
         bonus.setLayoutX(1200);
         bonus.setLayoutY(500);
         bonus.setStyle(" -fx-font: 50px Tahoma;" +
+                "-fx-background-color:BLACK;" +
+                "-fx-text-fill: white;" +
                 "-fx-background-radius: 20;");
 
         ////
@@ -65,6 +66,8 @@ public class ViewMenu {
         quitter.setLayoutX(1200);
         quitter.setLayoutY(700);
         quitter.setStyle(" -fx-font: 50px Tahoma;" +
+                "-fx-background-color:BLACK;" +
+                "-fx-text-fill: white;" +
                 "-fx-background-radius: 20;");
         ////
 
@@ -86,7 +89,7 @@ public class ViewMenu {
         MediaView mediaView = new MediaView(mediaPlayer);
         root.getChildren().add(mediaView);
         root.getChildren().addAll(imgBg);
-        root.getChildren().add(titre);
+
         root.getChildren().add(jouer);
         root.getChildren().add(bonus);
         root.getChildren().add(quitter);

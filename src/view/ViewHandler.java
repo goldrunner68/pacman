@@ -33,34 +33,26 @@ public class ViewHandler extends Application {
         viewBonus = new ViewBonus(root);
         ControllerMenu controllerMenu = new ControllerMenu(this, menu);
         ControllerMenuBonus controllerMenuBonus = new ControllerMenuBonus(this, menu);
-////////////////////////////////////////
+
         afficherMenuPrincipal();
         Music.playMainMenuMusic();
         primaryStage.setTitle("Pacman");
         primaryStage.setResizable(false);
-        primaryStage.setFullScreen(false);
+        primaryStage.setFullScreen(true);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
 
-
     //Getters et Setters
     public void setEventHandlerMenu(ControllerMenu controllerMenu) {
         viewMenu.setEvents(controllerMenu);
-
-
     }
-
     public void setEventHandlerMenuBonus(ControllerMenuBonus controllerMenuBonus) {
         viewBonus.setEvents(controllerMenuBonus);
-
-
     }
-
     public Stage getPrimaryStage() {
         return primaryStage;
     }
-
 
     public void afficherMenuPrincipal() {
         viewMenu.setVueMenuRoot();

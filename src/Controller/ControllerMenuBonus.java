@@ -16,8 +16,6 @@ public class ControllerMenuBonus implements EventHandler<MouseEvent> {
         this.launcher.setEventHandlerMenuBonus(this);
     }
 
-
-
     @Override
     public void handle(MouseEvent event) {
         if (event.getSource().equals(launcher.getVueBonus().getLancerJeu())) {
